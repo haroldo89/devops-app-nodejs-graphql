@@ -1,0 +1,75 @@
+swagger: "2.0"
+info:
+  title: apigate optional-string
+  description: "Get the name of an airport from its three-letter IATA code."
+  version: "1.0.0"
+host: http://35.192.134.124:32300
+x-google-endpoints:
+- name: "apigate-0nzfl7fr7akea.apigateway.xenon-hub-327616.cloud.goog"
+  target: "35.192.134.124"
+schemes:
+  - "http"
+paths:
+  "/hello":
+    
+    get:
+      description: "Get the airport name for a given IATA code."
+      operationId: "echo"
+      security:
+       - api_key: []
+      x-google-backend:
+        address: http://35.192.134.124:32300/api/hello
+        protocol: h2
+      responses:
+        200:
+          description: "Success."
+          schema:
+            type: string
+        400:
+          description: "The IATA code is invalid or missing."
+
+# # [START securityDef]
+securityDefinitions:
+  # This section configures basic authentication with an API key.
+  api_key:
+    type: "apiKey"
+    name: "key"
+    in: "query"
+# # [END securityDef]
+
+# swagger: "2.0"
+# info:
+#   version: 1.0.0
+#   title: Swagger hello
+#   license:
+#     name: MIT
+# host: apigate-0nzfl7fr7akea.apigateway.xenon-hub-327616.cloud.goog
+# x-google-endpoints:
+# - name: "apigate-0nzfl7fr7akea.apigateway.xenon-hub-327616.cloud.goog"
+#   target: "35.192.134.124:32300"
+# basePath: /v2
+# schemes:
+#   - http
+# consumes:
+#   - application/json
+# produces:
+#   - application/json
+# paths:
+#   /api/hello:
+#     get:
+#       summary: List all pets
+#       operationId: helloWorld
+#       responses:
+#         "200":
+#           description: A string
+#       security:
+#       - api_key: []
+
+# # # [START securityDef]
+# securityDefinitions:
+#   # This section configures basic authentication with an API key.
+#   api_key:
+#     type: "apiKey"
+#     name: "key"
+#     in: "query"
+# # # [END securityDef]

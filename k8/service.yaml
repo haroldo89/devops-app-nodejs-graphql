@@ -1,0 +1,12 @@
+# definicion de servicio interno.
+apiVersion: v1
+kind: Service
+metadata:
+  name: server-internal-service
+spec:
+  type: ClusterIP
+  ports:
+    - port: 80
+      targetPort: 3000
+  selector:
+    app: server-app
